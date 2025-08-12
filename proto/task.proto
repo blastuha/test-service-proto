@@ -37,9 +37,14 @@ message TaskListResponse {
   repeated Task tasks = 1;
 }
 
+message ListTasksByUserRequest {
+  uint32 user_id = 1; 
+}
+
 service TasksService {
   rpc GetTaskList(google.protobuf.Empty) returns (TaskListResponse);
   rpc CreateTask(TaskCreateRequest) returns (TaskResponse);
   rpc UpdateTask(TaskUpdateRequest) returns (TaskResponse);
   rpc DeleteTask(TaskDeleteRequest) returns (google.protobuf.Empty);
+  rpc ListTasksByUser(ListTasksByUserRequest) returns (TaskListResponse);
 }

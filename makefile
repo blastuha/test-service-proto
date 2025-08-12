@@ -20,3 +20,7 @@ generate: check-protoc clean
 clean:
 	@if exist $(GEN_DIR) rmdir /s /q $(GEN_DIR)
 
+.PHONY: check-protoc
+check-protoc:
+	@where $(PROTOC) >nul 2>nul || (echo "Error: protoc not found. Please install Protocol Buffers compiler." && exit 1)
+
